@@ -19,6 +19,27 @@ function setInterpolationImage(i) {
   $('#interpolation-image-wrapper').empty().append(image);
 }
 
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
 
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
@@ -74,5 +95,20 @@ $(document).ready(function() {
     $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
+
+    const slider = document.querySelector(".image-comparison .slider");
+    const beforeImage = document.querySelector(".image-comparison .before-image");
+    const sliderLine = document.querySelector(".image-comparison .slider-line");
+    const sliderIcon = document.querySelector(".image-comparison .slider-icon");
+
+    slider.addEventListener("input", (e) => {
+      let sliderValue = e.target.value + "%";
+
+      beforeImage.style.width = sliderValue;
+      sliderLine.style.left = sliderValue;
+      sliderIcon.style.left = sliderValue;
+    });
+
+    document.getElementById("defaultOpen").click();
 
 })
