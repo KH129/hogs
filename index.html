@@ -65,21 +65,21 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="https://kh129.github.io/hogs.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Paper (Coming Soon)</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://kh129.github.io/hogs.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv (Coming Soon)</span>
                 </a>
               </span>
               <!-- Video Link. -->
@@ -142,7 +142,7 @@
           </p>
           <p>
             HoGS effectively manages both expansive spatial positions and scales particularly in outdoor unbounded environments
-            by adopting projective geometry principles. Experiments show that \HGS significantly enhances accuracy in
+            by adopting projective geometry principles. Experiments show that HoGS significantly enhances accuracy in
             reconstructing distant objects while maintaining high-quality rendering of nearby objects, along with fast training
             speed and real-time rendering capability.
           </p>
@@ -161,14 +161,48 @@
       </div>
     </div>
     <!--/ Paper video. -->
+
   </div>
 </section>
 
 <section class="section">
+  <!-- Method Visualization and Overview. -->
+  <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div>
+          <h2 class="title is-3">Method Overview</h2>
+          <div class="images-container">
+            <img src="./static/images/unit_scale.png" width="1000" height="750" />
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              HoGS uses homogeneous coordinates in the 3D Gaussian Splatting (3DGS) framework to represent both positions and scales.
+              The nearby and distant Gaussian positions are represented seamlessly by homogeneous coordinates defined in the projective
+              geometry, and the Gaussian's distance and scales change proportionally with the homogeneous component in the scale.
+              Our HoGS simplifies the optimization of positions and scales of distant objects, and enables the accurate rendering of unbounded scenes
+              while preserving the 3DGS’s fast training time and real-time performance.
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+    <!--/ Method Visualization and Overview. -->
+</section>
+
+
+<section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div>
         <h2 class="title is-3">Results</h2>
+         <div class="content has-text-justified">
+          <p>
+            We evaluated our method on a total of 17 real scenes from multiple datasets containing diverse environments.
+            In particular, we test our method on the full dataset of Mip-NeRF360, including four indoor and five outdoor scenes,
+            two selected scenes from the Tanks&Temples dataset, as well as three indoor and three outdoor scenes from DL3DV
+            benchmark dataset. For the full evaluation, please check the paper and the supplemental.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -329,41 +363,6 @@
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Concurrent Work. -->
-
-  </div>
-</section>
-
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -376,32 +375,40 @@
   </div>
 </section>
 
+<section class="references-section">
+    <div class="container is-max-desktop content">
+        <h2 class="title is-3">References</h2>
+
+        <ol class="references-list">
+            <li>
+                <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/" target="_blank">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a>
+            </li>
+
+            <li>
+                <a href="https://jonbarron.info/mipnerf360/" target="_blank">Mip-NeRF 360: Unbounded Anti-Aliased Neural Radiance Fields</a>
+            </li>
+
+            <li>
+                <a href="https://www.tanksandtemples.org/" target="_blank">Tanks and Temples: Benchmarking Large-Scale Scene Reconstruction</a>
+            </li>
+
+            <li>
+                <a href="https://dl3dv-10k.github.io/DL3DV-10K/" target="_blank">DL3DV-10K: A Large-Scale Scene Dataset for Deep Learning-based 3D Vision</a>
+            </li>
+        </ol>
+    </div>
+</section>
+
+
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> for kindly open-sourcing the template of this website.
           </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
           </p>
         </div>
       </div>
