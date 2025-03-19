@@ -19,25 +19,84 @@ function setInterpolationImage(i) {
   $('#interpolation-image-wrapper').empty().append(image);
 }
 
-function openCity(evt, cityName) {
+function openScene(evt, sceneName) {
   // Declare all variables
-  var i, tabcontent, tablinks;
+  // var i, tabcontent, tablinks;
+  //
+  // // Get all elements with class="tabcontent" and hide them
+  // tabcontent = document.getElementsByClassName("tabcontent");
+  // for (i = 0; i < tabcontent.length; i++) {
+  //   tabcontent[i].style.display = "none";
+  // }
+  //
+  // // Get all elements with class="tablinks" and remove the class "active"
+  // tablinks = document.getElementsByClassName("tablinks");
+  // for (i = 0; i < tablinks.length; i++) {
+  //   tablinks[i].className = tablinks[i].className.replace(" active", "");
+  // }
+  //
+  // // Show the current tab, and add an "active" class to the button that opened the tab
+  // document.getElementById(sceneName).style.display = "block";
+  // evt.currentTarget.className += " active";
+  //
+  // const slider = document.querySelector(".image-comparison .slider");
+  // const beforeImage = document.querySelector(".image-comparison .before-image");
+  // const sliderLine = document.querySelector(".image-comparison .slider-line");
+  // const sliderIcon = document.querySelector(".image-comparison .slider-icon");
+  //
+  // slider.addEventListener("input", (e) => {
+  //     let sliderValue = e.target.value + "%";
+  //
+  //     beforeImage.style.width = sliderValue;
+  //     sliderLine.style.left = sliderValue;
+  //     sliderIcon.style.left = sliderValue;
+  // });
+    // Hide all tab content
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
 
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+    // Remove "active" class from all tab buttons
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
 
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
+    // Show the current tab and add "active" class
+    document.getElementById(sceneName).style.display = "block";
+    evt.currentTarget.classList.add("active");
 
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
+    // Select elements inside the active tab only
+    const activeTab = document.getElementById(sceneName);
+    const slider = activeTab.querySelector(".slider");
+    const beforeImage = activeTab.querySelector(".before-image");
+    const sliderLine = activeTab.querySelector(".slider-line");
+    const sliderIcon = activeTab.querySelector(".slider-icon");
+
+    // Ensure elements exist
+    if (!slider || !beforeImage || !sliderLine || !sliderIcon) {
+        console.error("Slider elements not found in", sceneName);
+        return;
+    }
+
+    // Remove existing event listeners (to prevent duplicates)
+    const newSlider = slider.cloneNode(true);
+    slider.parentNode.replaceChild(newSlider, slider);
+
+    // Add new event listener for slider movement
+    newSlider.addEventListener("input", (e) => {
+        let sliderValue = e.target.value + "%";
+        beforeImage.style.width = sliderValue;
+        sliderLine.style.left = sliderValue;
+        sliderIcon.style.left = sliderValue;
+    });
+
+    // Set default slider position
+    newSlider.value = 50;
+    beforeImage.style.width = "50%";
+    sliderLine.style.left = "50%";
+    sliderIcon.style.left = "50%";
 }
 
 
@@ -96,18 +155,7 @@ $(document).ready(function() {
 
     bulmaSlider.attach();
 
-    const slider = document.querySelector(".image-comparison .slider");
-    const beforeImage = document.querySelector(".image-comparison .before-image");
-    const sliderLine = document.querySelector(".image-comparison .slider-line");
-    const sliderIcon = document.querySelector(".image-comparison .slider-icon");
 
-    slider.addEventListener("input", (e) => {
-      let sliderValue = e.target.value + "%";
-
-      beforeImage.style.width = sliderValue;
-      sliderLine.style.left = sliderValue;
-      sliderIcon.style.left = sliderValue;
-    });
 
     document.getElementById("defaultOpen").click();
 

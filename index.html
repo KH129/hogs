@@ -8,20 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HoGS: Unified Near and Far Object Reconstruction via Homogeneous Gaussian Splatting</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -108,7 +94,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/huntorochi/HoGS"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -117,15 +103,15 @@
                   </a>
               </span>
               <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-              </span>
+<!--              <span class="link-block">-->
+<!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="far fa-images"></i>-->
+<!--                  </span>-->
+<!--                  <span>Data</span>-->
+<!--                  </a>-->
+<!--              </span>-->
             </div>
 
           </div>
@@ -180,18 +166,26 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+      </div>
+    </div>
+
       <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        <button class="tablinks" onclick="openScene(event, 'Train')" id="defaultOpen">Train</button>
+        <button class="tablinks" onclick="openScene(event, 'Treehill')">Treehill</button>
+        <button class="tablinks" onclick="openScene(event, 'DL3_21')">DL3DV 21</button>
+        <button class="tablinks" onclick="openScene(event, 'DL3_26')">DL3DV 26</button>
+        <button class="tablinks" onclick="openScene(event, 'DL3_69')">DL3DV 69</button>
       </div>
 
       <!-- Tab content -->
-      <div id="London" class="tabcontent">
+      <div id="Train" class="tabcontent">
         <div class="image-comparison">
           <div class="images-container">
-            <img class="before-image" src="./static/images/interpolate_start.jpg" alt="" />
-            <img class="after-image" src="./static/images/interpolate_end.jpg" alt="" />
+            <img class="before-image" src="./static/images/train/3d_00010.png" alt="" />
+            <img class="after-image" src="./static/images/train/ours_00010.png" alt="" />
 
             <div class="slider-line"></div>
             <div class="slider-icon">
@@ -216,123 +210,127 @@
         </div>
       </div>
 
-      <div id="Paris" class="tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p>
+      <div id="Treehill" class="tabcontent">
+          <div class="image-comparison">
+            <div class="images-container">
+              <img class="before-image" src="./static/images/treehill/3d_00004.png" alt="" />
+              <img class="after-image" src="./static/images/treehill/ours_00004.png" alt="" />
+
+              <div class="slider-line"></div>
+              <div class="slider-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                  />
+                </svg>
+              </div>
+
+              <input type="range" class="slider" min="0" max="100" />
+            </div>
+          </div>
       </div>
 
-      <div id="Tokyo" class="tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+      <div id="DL3_21" class="tabcontent">
+          <div class="image-comparison">
+            <div class="images-container">
+              <img class="before-image" src="./static/images/dl3dv_21/3d_00005.png" alt="" />
+              <img class="after-image" src="./static/images/dl3dv_21/ours_00005.png" alt="" />
+
+              <div class="slider-line"></div>
+              <div class="slider-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                  />
+                </svg>
+              </div>
+
+              <input type="range" class="slider" min="0" max="100" />
+            </div>
+          </div>
       </div>
+
+      <div id="DL3_26" class="tabcontent">
+          <div class="image-comparison">
+            <div class="images-container">
+              <img class="before-image" src="./static/images/dl3dv_26/3d_00009.png" alt="" />
+              <img class="after-image" src="./static/images/dl3dv_26/ours_00009.png" alt="" />
+
+              <div class="slider-line"></div>
+              <div class="slider-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                  />
+                </svg>
+              </div>
+
+              <input type="range" class="slider" min="0" max="100" />
+            </div>
+          </div>
+      </div>
+
+      <div id="DL3_69" class="tabcontent">
+          <div class="image-comparison">
+            <div class="images-container">
+              <img class="before-image" src="./static/images/dl3dv_69/3d_00038.png" alt="" />
+              <img class="after-image" src="./static/images/dl3dv_69/ours_00038.png" alt="" />
+
+              <div class="slider-line"></div>
+              <div class="slider-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"
+                  />
+                </svg>
+              </div>
+
+              <input type="range" class="slider" min="0" max="100" />
+            </div>
+          </div>
+    </div>
   </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
 
 
     <!-- Concurrent Work. -->
@@ -369,11 +367,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@inproceedings{liuHoGS,
+      author       = {Xinpeng Liu, Zeyi Huang, Fumio Okura, Yasuyuki Matsushita},
+      title        = {HoGS: Unified Near and Far Object Reconstruction via Homogeneous Gaussian Splatting},
+      booktitle    = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+      year         = {2025}
 }</code></pre>
   </div>
 </section>
