@@ -1,6 +1,6 @@
 #  HoGS: Homogeneous Gaussian Splatting
 
-This is the repository that contains source code for the [HoGS website](https://kh129.github.io/hogs.github.io/).
+This is the repository that contains source code for the [HoGS website](https://kh129.github.io/hogs).
 
 
 # Website License
